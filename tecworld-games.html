@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tecworld Games – Play Free Online Games | Chess, XO &amp; Jumping Jack</title>
+<meta name="description" content="Tecworld Games is a free online games portal. Play chess online free, play XO (tic tac toe) online, and play Jumping Jack arcade game — no download, no sign-up, instant browser games.">
+<meta name="keywords" content="free online games, play games online, browser games, chess game online, play chess free, xo game, tic tac toe online, jumping jack game, arcade games online, html5 games, no download games, 2 player games online, puzzle games, strategy games, Tecworld Games, Tec with Amey">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Tecworld Games – Play Free Online Games">
+<meta property="og:description" content="Play Chess, XO (Tic Tac Toe) and Jumping Jack free online — no downloads, no sign-up. Instant browser games.">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Tecworld Games – Free Online Games",
+  "itemListElement": [
+    {
+      "@type": "VideoGame",
+      "position": 1,
+      "name": "Chess Game Online",
+      "genre": "Strategy Game",
+      "url": "https://chessgame-tecwithamey.onrender.com/",
+      "description": "Play free online chess game in your browser, no download or sign-up required."
+    },
+    {
+      "@type": "VideoGame",
+      "position": 2,
+      "name": "Jumping Jack",
+      "genre": "Arcade Platformer Game",
+      "url": "https://gd.games/games/932023aa-13aa-437d-b66e-89a7ad101e90",
+      "description": "Play free Jumping Jack arcade platformer game online instantly in your browser."
+    },
+    {
+      "@type": "VideoGame",
+      "position": 3,
+      "name": "XO Game (Tic Tac Toe)",
+      "genre": "Puzzle / 2 Player Game",
+      "url": "https://xogame-al4z.onrender.com/",
+      "description": "Play free XO game / Tic Tac Toe online, a classic 2 player browser game."
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-void:#120e26;
+    --bg-cabinet:#1c1640;
+    --bg-cabinet-2:#241c4f;
+    --line:#3a3270;
+    --neon-cyan:#3dfdff;
+    --neon-magenta:#ff2e92;
+    --neon-amber:#ffb347;
+    --text-light:#f2eeff;
+    --text-dim:#a79fd1;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  .sr-only{
+    position:absolute;
+    width:1px;height:1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+  }
+
+  body{
+    margin:0;
+    background:var(--bg-void);
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(61,253,255,0.07), transparent 45%),
+      radial-gradient(circle at 85% 30%, rgba(255,46,146,0.08), transparent 45%);
+    color:var(--text-light);
+    font-family:'Space Grotesk', sans-serif;
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit;}
+
+  /* CRT scanline overlay — the page's signature texture */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.035) 0px,
+      rgba(255,255,255,0.035) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    pointer-events:none;
+    z-index:50;
+    mix-blend-mode:overlay;
+  }
+
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- MARQUEE HEADER ---------- */
+  .marquee-header{
+    padding:56px 0 28px;
+    text-align:center;
+    border-bottom:2px solid var(--line);
+    position:relative;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--neon-amber);
+    margin:0 0 18px;
+  }
+
+  .eyebrow::before, .eyebrow::after{content:"★ ";}
+
+  .logo-mark{
+    display:block;
+    width:min(260px, 62vw);
+    margin:0 auto;
+    filter:drop-shadow(0 0 22px rgba(61,253,255,0.25)) drop-shadow(0 0 36px rgba(255,179,71,0.18));
+    animation:flicker 4.2s infinite ease-in-out;
+  }
+  .logo-mark img{width:100%;display:block;border-radius:18px;}
+
+  @keyframes flicker{
+    0%,93%,100%{opacity:1;}
+    94%{opacity:0.55;}
+    95%{opacity:1;}
+    96%{opacity:0.7;}
+    97%{opacity:1;}
+  }
+
+  .powered-by{
+    margin:20px 0 6px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--text-dim);
+    letter-spacing:0.03em;
+  }
+  .powered-by b{color:var(--neon-cyan);font-weight:500;}
+
+  .tagline{
+    max-width:560px;
+    margin:18px auto 0;
+    font-size:16px;
+    color:var(--text-dim);
+  }
+
+  /* ---------- TICKER ---------- */
+  .ticker-strip{
+    border-bottom:2px solid var(--line);
+    background:var(--bg-cabinet);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:10px 0;
+  }
+  .ticker-track{
+    display:inline-block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.04em;
+    color:var(--neon-amber);
+    animation:ticker 32s linear infinite;
+    padding-left:100%;
+  }
+  @keyframes ticker{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-100%);}
+  }
+  .ticker-track span{margin:0 18px;color:var(--text-dim);}
+  .ticker-track span.dot{color:var(--neon-magenta);}
+
+  /* ---------- GAME SELECT SECTION ---------- */
+  .select-heading{
+    text-align:center;
+    padding:52px 0 8px;
+  }
+  .select-heading h2{
+    font-family:'Press Start 2P', monospace;
+    font-size:clamp(16px,3vw,22px);
+    color:var(--neon-cyan);
+    margin:0 0 10px;
+  }
+  .select-heading p{
+    color:var(--text-dim);
+    max-width:620px;
+    margin:0 auto;
+    font-size:15px;
+  }
+
+  .cabinet-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+    padding:36px 0 64px;
+  }
+  @media (max-width:860px){
+    .cabinet-grid{grid-template-columns:1fr;}
+  }
+
+  .cabinet{
+    background:linear-gradient(160deg, var(--bg-cabinet), var(--bg-cabinet-2));
+    border:2px solid var(--line);
+    border-radius:14px;
+    padding:28px 24px 26px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    position:relative;
+    transition:transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .cabinet:hover{
+    transform:translateY(-6px);
+    border-color:var(--accent);
+    box-shadow:0 14px 38px -10px rgba(0,0,0,0.55), 0 0 0 1px var(--accent), 0 0 24px -2px var(--accent);
+  }
+  .cabinet.c-cyan{--accent:var(--neon-cyan);}
+  .cabinet.c-magenta{--accent:var(--neon-magenta);}
+  .cabinet.c-amber{--accent:var(--neon-amber);}
+
+  .cabinet-icon{
+    width:54px;height:54px;
+    border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(255,255,255,0.04);
+    border:1px solid var(--line);
+  }
+  .cabinet-icon svg{width:30px;height:30px;stroke:var(--accent);}
+
+  .cabinet h3{
+    font-family:'Press Start 2P', monospace;
+    font-size:14px;
+    margin:4px 0 0;
+    color:var(--text-light);
+  }
+
+  .cabinet .genre{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--accent);
+    margin:-6px 0 0;
+  }
+
+  .cabinet p.desc{
+    font-size:14.5px;
+    color:var(--text-dim);
+    margin:0;
+    flex-grow:1;
+  }
+
+  .play-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    text-decoration:none;
+    font-family:'JetBrains Mono', monospace;
+    font-weight:500;
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:13px 18px;
+    border-radius:8px;
+    border:1px solid var(--accent);
+    color:var(--bg-void);
+    background:var(--accent);
+    margin-top:6px;
+    transition:filter 0.2s ease, transform 0.15s ease;
+  }
+  .play-btn:hover{filter:brightness(1.12);transform:scale(1.02);}
+  .play-btn:focus-visible{outline:3px solid #fff;outline-offset:2px;}
+
+  /* ---------- SEO COPY SECTION ---------- */
+  .seo-block{
+    border-top:2px solid var(--line);
+    padding:48px 0 56px;
+  }
+  .seo-block h2{
+    font-family:'Press Start 2P', monospace;
+    font-size:16px;
+    color:var(--neon-magenta);
+    margin:0 0 18px;
+  }
+  .seo-block p{
+    color:var(--text-dim);
+    font-size:15px;
+    max-width:760px;
+  }
+  .seo-block p + p{margin-top:14px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:2px solid var(--line);
+    padding:28px 0 40px;
+    text-align:center;
+  }
+  footer .foot-logo{
+    font-family:'Press Start 2P', monospace;
+    font-size:13px;
+    color:var(--text-light);
+  }
+  footer .foot-powered{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--text-dim);
+    margin-top:10px;
+  }
+  footer .foot-powered b{color:var(--neon-cyan);font-weight:500;}
+
+  footer .foot-contact{
+    margin-top:14px;
+  }
+  footer .foot-contact a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    color:var(--neon-amber);
+    text-decoration:none;
+    border-bottom:1px dashed var(--neon-amber);
+    padding-bottom:2px;
+  }
+  footer .foot-contact a:hover{color:var(--neon-cyan);border-color:var(--neon-cyan);}
+
+  @media (prefers-reduced-motion: reduce){
+    .logo-mark{animation:none;}
+    .ticker-track{animation:none;}
+    .cabinet{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="marquee-header">
+  <div class="wrap">
+    <p class="eyebrow">Free Online Games · No Download · No Sign-Up</p>
+    <h1 class="sr-only">Tecworld Games – Free Online Games Portal</h1>
+    <div class="logo-mark"><img src="tecworld-logo.jpeg" alt="Tecworld Games logo"></div>
+    <p class="powered-by">Powered by <b>Tec with Amey</b></p>
+    <p class="tagline">Your browser-based arcade for chess, tic tac toe and arcade platforming — pick a cabinet and play instantly.</p>
+  </div>
+</header>
+
+<div class="ticker-strip" aria-hidden="true">
+  <div class="ticker-track">
+    <span>PLAY FREE ONLINE GAMES</span><span class="dot">●</span>
+    <span>CHESS GAME ONLINE</span><span class="dot">●</span>
+    <span>XO / TIC TAC TOE GAME</span><span class="dot">●</span>
+    <span>JUMPING JACK ARCADE GAME</span><span class="dot">●</span>
+    <span>NO DOWNLOAD BROWSER GAMES</span><span class="dot">●</span>
+    <span>2 PLAYER GAMES ONLINE</span><span class="dot">●</span>
+    <span>HTML5 GAMES FREE</span><span class="dot">●</span>
+    <span>PLAY FREE ONLINE GAMES</span><span class="dot">●</span>
+    <span>CHESS GAME ONLINE</span><span class="dot">●</span>
+    <span>XO / TIC TAC TOE GAME</span><span class="dot">●</span>
+    <span>JUMPING JACK ARCADE GAME</span><span class="dot">●</span>
+    <span>NO DOWNLOAD BROWSER GAMES</span><span class="dot">●</span>
+    <span>2 PLAYER GAMES ONLINE</span><span class="dot">●</span>
+    <span>HTML5 GAMES FREE</span><span class="dot">●</span>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section class="select-heading">
+    <h2>SELECT YOUR GAME</h2>
+    <p>Three free browser games, zero installs. Tap a cabinet below to start playing instantly on desktop or mobile.</p>
+  </section>
+
+  <section class="cabinet-grid">
+
+    <article class="cabinet c-cyan">
+      <div class="cabinet-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3c1.2 0 2.1.9 2.1 2.1 0 .8-.4 1.5-1 1.9l1.4 4.5H9.5l1.4-4.5a2.1 2.1 0 0 1-1-1.9C9.9 3.9 10.8 3 12 3Z"/>
+          <path d="M8 17.5h8L17 21H7l1-3.5Z"/>
+          <path d="M8.5 14.5h7l.7 3H7.8l.7-3Z"/>
+        </svg>
+      </div>
+      <h3>Chess Game</h3>
+      <p class="genre">Strategy · 1 vs 1</p>
+      <p class="desc">Play a free online chess game right in your browser. A clean, fast chess board for casual matches and serious strategy practice — no installs, no sign-up, just play.</p>
+      <a class="play-btn" href="https://chessgame-tecwithamey.onrender.com/" target="_blank" rel="noopener">▶ Play Now</a>
+    </article>
+
+    <article class="cabinet c-magenta">
+      <div class="cabinet-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="4.5" r="1.8"/>
+          <path d="M12 9v5"/>
+          <path d="M12 9 8 7M12 9l4-2"/>
+          <path d="M12 14 8 19M12 14l4 5"/>
+          <path d="M3 13h5M16 13h5"/>
+        </svg>
+      </div>
+      <h3>Jumping Jack</h3>
+      <p class="genre">Arcade · Platformer</p>
+      <p class="desc">A free arcade platformer game built for quick reflexes. Jump, dodge and climb your way through fast-paced levels — an addictive browser game you can pick up in seconds.</p>
+      <a class="play-btn" href="https://gd.games/games/932023aa-13aa-437d-b66e-89a7ad101e90" target="_blank" rel="noopener">▶ Play Now</a>
+    </article>
+
+    <article class="cabinet c-amber">
+      <div class="cabinet-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 9h16M4 15h16M9 4v16M15 4v16"/>
+        </svg>
+      </div>
+      <h3>XO Game</h3>
+      <p class="genre">Puzzle · 2 Player</p>
+      <p class="desc">Play XO online — the classic tic tac toe game, free and instant. Challenge a friend on the same device for quick rounds of this timeless 2 player browser game.</p>
+      <a class="play-btn" href="https://xogame-al4z.onrender.com/" target="_blank" rel="noopener">▶ Play Now</a>
+    </article>
+
+  </section>
+
+  <section class="seo-block">
+    <h2>WHY PLAY ON TECWORLD GAMES</h2>
+    <p>Tecworld Games is a free online games portal built around instant browser games. Every title here, from the chess game to the XO game and the Jumping Jack arcade game, runs straight in your browser on desktop, tablet, or phone, with no downloads, no installs, and no sign-up required.</p>
+    <p>Whether you're after a quiet strategy game like online chess, a quick 2 player round of tic tac toe, or a fast arcade platformer to burn a few minutes, Tecworld Games keeps the whole library a single tap away. New free online games are added regularly, so check back for more browser games from Tec with Amey.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-logo">TECWORLD GAMES</div>
+  <div class="foot-powered">Powered by <b>Tec with Amey</b> · Free Online Games Portal</div>
+  <div class="foot-contact"><a href="mailto:tecwithamey@gmail.com">tecwithamey@gmail.com</a></div>
+</footer>
+
+</body>
+</html>
